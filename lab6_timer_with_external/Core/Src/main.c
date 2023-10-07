@@ -67,21 +67,19 @@ static void MX_TIM3_Init(void);
 /* USER CODE BEGIN 0 */
 uint32_t counter;
 
-void TIMMY2() {
-	// Your callback code here
-	char buffer[50];
-	sprintf(buffer, "%.2d:%.2d\r", counter / 60, counter % 60);
-	HAL_UART_Transmit(&huart3, (uint8_t*) buffer, strlen(buffer),
-	HAL_MAX_DELAY);
-}
-
 //TIMMY2 equivalent?
-//void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim) {
-//    if (htim->Instance == TIM2) {
-//        // Timer elapsed. You can call your callback function here
-//        TimerElapsedCallback();
-//    }
-//}
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+	if (htim->Instance == TIM2) {
+		// Timer elapsed. You can call your callback function here
+		char buffer[50];
+		sprintf(buffer, "%.2d:%.2d\r", counter / 60, counter % 60);
+		HAL_UART_Transmit(&huart3, (uint8_t*) buffer, strlen(buffer),
+		HAL_MAX_DELAY);
+	}
+	else if(htim->Instance == TIM3){
+		counter++;
+	}
+}
 
 /* USER CODE END 0 */
 
