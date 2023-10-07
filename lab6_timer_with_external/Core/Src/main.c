@@ -73,8 +73,15 @@ void TIMMY2() {
 	sprintf(buffer, "%.2d:%.2d\r", counter / 60, counter % 60);
 	HAL_UART_Transmit(&huart3, (uint8_t*) buffer, strlen(buffer),
 	HAL_MAX_DELAY);
-
 }
+
+//TIMMY2 equivalent?
+//void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim) {
+//    if (htim->Instance == TIM2) {
+//        // Timer elapsed. You can call your callback function here
+//        TimerElapsedCallback();
+//    }
+//}
 
 /* USER CODE END 0 */
 

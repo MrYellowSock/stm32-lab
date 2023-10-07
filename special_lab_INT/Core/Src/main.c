@@ -69,20 +69,6 @@ void cleverSend(UART_HandleTypeDef huart, char *tosend) {
 	HAL_MAX_DELAY);
 }
 
-void cleverReceive(UART_HandleTypeDef huart, char *buffer, int size) {
-	int i = 0;
-	while (__HAL_UART_GET_FLAG(&huart,UART_FLAG_RXNE) == RESET) {
-	}
-	while (i < size) {
-		HAL_UART_Receive(&huart, (uint8_t*) &buffer[i], 1, HAL_MAX_DELAY);
-		if (buffer[i] == 0 || buffer[i] == '\n' || buffer[i] == '\r') {
-			buffer[i] = 0;
-			break;
-		}
-		i++;
-	}
-}
-
 int append(char *buff, char c) {
 	if (c == '\r' || c == '\n')
 		return 1;

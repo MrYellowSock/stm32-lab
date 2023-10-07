@@ -1,3 +1,5 @@
+nInterface 0x00 -> 0x04
+HID_MOUSE_REPORT_DESC_SIZE -> 64 (same size as this array)
 __ALIGN_BEGIN static uint8_t HID_MOUSE_ReportDesc[HID_MOUSE_REPORT_DESC_SIZE] __ALIGN_END =
 {
 		0x05, 0x01,                    // USAGE_PAGE (Generic Desktop)
@@ -37,5 +39,3 @@ __ALIGN_BEGIN static uint8_t HID_MOUSE_ReportDesc[HID_MOUSE_REPORT_DESC_SIZE] __
 		0xc0,                          //   END_COLLECTION
 		0xc0                           // END_COLLECTION
 };
-
-For our joystick
